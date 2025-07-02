@@ -3,14 +3,16 @@ package ivancroce.entities;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity // Tells to JPA that this class must be mapped to a specific table
 @Table(name = "events")
 public class Event {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY) // same as serial/bigserial (value that auto-increment)
-    private long id;
+    @GeneratedValue
+    @Column(name = "event_id")
+    private UUID eventId;
 
     @Column(name = "title", nullable = false)
     private String title;
@@ -41,8 +43,8 @@ public class Event {
         this.maxNumParticipants = maxNumParticipants;
     }
 
-    public long getId() {
-        return id;
+    public UUID getId() {
+        return eventId;
     }
 
 
@@ -89,7 +91,7 @@ public class Event {
     @Override
     public String toString() {
         return "Event{" +
-                "id=" + id +
+                "eventId=" + eventId +
                 ", title='" + title + '\'' +
                 ", eventDate=" + eventDate +
                 ", description='" + description + '\'' +

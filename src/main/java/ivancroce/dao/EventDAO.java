@@ -5,6 +5,8 @@ import ivancroce.exceptions.NotFoundException;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityTransaction;
 
+import java.util.UUID;
+
 public class EventDAO {
 
     // em is our "contact" with the DB
@@ -32,18 +34,18 @@ public class EventDAO {
     }
 
     // findId method
-    public Event findById(long id) {
-        Event found = em.find(Event.class, id); // Event.class to go look in the right table
+    public Event findById(String eventId) {
+        Event found = em.find(Event.class, UUID.fromString(eventId)); // Event.class to go look in the right table
         if (found == null)
-            throw new NotFoundException(id);
+            throw new NotFoundException(eventId);
         return found;
     }
 
     // delete
-    public void findByIdAndDelete(long id) {
+    public void findByIdAndDelete(String eventId) {
 
         // Find the event in the DB through the id
-        Event found = this.findById(id);
+        Event found = this.findById(eventId);
 
         // ask em to create a new transaction
         EntityTransaction transaction = em.getTransaction();

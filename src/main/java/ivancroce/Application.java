@@ -26,8 +26,8 @@ public class Application {
         ed.save(concert);
 
         try {
-            Event aldoFromDB = ed.findById(5);
-            System.out.println(aldoFromDB);
+            Event aldoFromDB = ed.findById("519d2fc1-c1c5-4bab-9d8a-4e1737253f21");
+            System.out.println(aldoFromDB); // findById method
 
             // ed.findByIdAndDelete(3); to delete
 
