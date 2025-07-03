@@ -9,6 +9,9 @@
     <persistence-unit name="events_management_2_pu">
         <!-- All'interno della pu dovremmo aggiungere anche le classi per permettere a JPA di rilevare correttamente le entities che abbiamo definito -->
         <class>ivancroce.entities.Event</class>
+        <class>ivancroce.entities.Location</class>
+        <class>ivancroce.entities.Person</class>
+        <class>ivancroce.entities.Participation</class>
         <!--    need to add class    <class>ivancroce.entities.Event</class>-->
         <properties>
             <property name="jakarta.persistence.jdbc.url"
